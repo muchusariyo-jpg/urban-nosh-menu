@@ -227,7 +227,8 @@ h3.subcat-title{
 .item-photo.empty{display:flex; align-items:center; justify-content:center; font-size:1.3rem; opacity:.5; border-style:dashed;}
 
 .item-info{flex:1; min-width:0;}
-.item-top-row{display:flex; justify-content:space-between; gap:8px; align-items:flex-start;}
+.item-top-row{display:flex; justify-content:space-between; gap:8px; align-items:flex-start; padding-right:34px;}
+.grid-2col .item-top-row{padding-right:0;}
 .item-name-row{display:flex; align-items:center; gap:6px; flex-wrap:wrap;}
 .veg-dot{width:11px; height:11px; border:1.5px solid var(--olive); border-radius:3px; display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto;}
 .veg-dot::after{content:''; width:5px; height:5px; border-radius:50%; background:var(--olive);}
@@ -250,7 +251,9 @@ h3.subcat-title{
   font-size:.85rem; color:var(--coffee-soft); z-index:5;
 }
 .fav-btn.active{color:var(--rust); border-color:var(--rust);}
-.grid-2col .fav-btn{top:96px;}
+/* In grid view the photo spans the card's full width, so the default
+   top:8/right:8 position naturally sits over the photo's corner
+   instead of the price text below it — no override needed. */
 
 .empty-state{
   text-align:center; padding:50px 20px; color:var(--coffee-soft);
