@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Urban Nosh — Menu</title>
+<meta name="description" content="Urban Nosh — Good Food. Urban Mood. Browse our full menu: tea, snacks, porotta & burgers, shawarma & dishes, and fries.">
+<meta name="theme-color" content="#33401F">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Urban Nosh — Menu">
+<meta property="og:description" content="Good Food. Urban Mood. Browse the full Urban Nosh menu.">
+<meta property="og:type" content="website">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icons/icon-192.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Urban Nosh",
+  "servesCuisine": ["Kerala", "Indian", "Fast Food", "Cafe"],
+  "priceRange": "₹10 - ₹180"
+}
+</script>
+</head>
+<body>
+
+<!-- Scroll progress bar -->
+<div id="scrollProgress"></div>
+
+<!-- Splash screen -->
+<div id="splash">
+  <div class="splash-crest" id="logoCrestSplash">UN</div>
+  <div class="splash-text">URBAN NOSH</div>
+</div>
+
+<!-- Header / Hero -->
+<header class="hero">
+  <div class="hero-topbar">
+    <button class="icon-btn" id="darkModeToggle" aria-label="Toggle dark mode">🌙</button>
+  </div>
+  <div class="crest" id="logoCrest">UN</div>
+  <div class="eyebrow">Bakery · Café · Restaurant</div>
+  <h1 class="brand" id="brandName">Urban Nosh</h1>
+  <div class="handle" id="brandHandle">@ Ruchikoottu</div>
+  <div class="tagline" id="brandTagline">Good Food. Urban Mood.</div>
+  <div class="services-row" id="servicesRow"></div>
+</header>
+
+<!-- Search -->
+<div class="search-bar" id="searchBar">
+  <input type="search" id="searchInput" placeholder="Search dishes, drinks, snacks…" aria-label="Search menu">
+  <button class="clear-search" id="clearSearch" aria-label="Clear search">✕</button>
+  <div id="searchSuggestions"></div>
+</div>
+
+<!-- Sticky category nav -->
+<nav class="cat-nav" id="catNav" aria-label="Menu categories"></nav>
+
+<!-- Filter / Sort / View controls -->
+<div class="controls-bar">
+  <button class="filter-chip" data-filter="veg">🟢 Veg</button>
+  <button class="filter-chip" data-filter="nonveg">🔴 Non-Veg</button>
+  <button class="filter-chip" data-filter="bestSeller">⭐ Best Seller</button>
+  <button class="filter-chip" data-filter="chefSpecial">👨‍🍳 Chef Special</button>
+  <button class="filter-chip" data-filter="newItem">🆕 New</button>
+  <button class="filter-chip" data-filter="favorites">♥ Favorites</button>
+  <select class="sort-select" id="sortSelect" aria-label="Sort menu">
+    <option value="default">Sort: Menu order</option>
+    <option value="priceLow">Price: Low to High</option>
+    <option value="priceHigh">Price: High to Low</option>
+    <option value="az">A – Z</option>
+    <option value="recent">Recently Added</option>
+  </select>
+  <div class="view-toggle">
+    <button class="active" data-view="list" aria-label="List view">☰</button>
+    <button data-view="grid" aria-label="Grid view">▦</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- Today's Special -->
+  <section class="highlight-strip" id="todaysSpecialSection">
+    <div class="sec-head"><h2 class="sec-title">Today's Special</h2></div>
+    <hr class="divider">
+    <div class="highlight-scroll" id="todaysSpecialScroll"></div>
+  </section>
+
+  <!-- Chef Recommends -->
+  <section class="highlight-strip" id="chefRecoSection">
+    <div class="sec-head"><h2 class="sec-title">Chef Recommends</h2></div>
+    <hr class="divider">
+    <div class="highlight-scroll" id="chefRecoScroll"></div>
+  </section>
+
+  <!-- Full menu, generated entirely from menu.json -->
+  <div id="menuSections">
+    <div class="skeleton-card"><div class="skeleton-block" style="width:64px;height:64px;"></div><div style="flex:1"><div class="skeleton-block" style="height:14px;width:60%;margin-bottom:8px;"></div><div class="skeleton-block" style="height:10px;width:90%;"></div></div></div>
+  </div>
+
+  <!-- About / Hours / Contact -->
+  <section class="info-section" id="about">
+    <div class="sec-head"><h2 class="sec-title">About Urban Nosh</h2></div>
+    <hr class="divider">
+    <div class="info-card">
+      <h3>Our Story</h3>
+      <p>A Kerala-style café and restaurant serving up crispy fries, hand-rolled shawarma, tea-time snacks, and comfort dishes made fresh every day.</p>
+    </div>
+    <div class="info-card">
+      <h3>Opening Hours</h3>
+      <p id="infoHours"></p>
+    </div>
+    <div class="info-card">
+      <h3>Visit or Reach Us</h3>
+      <p id="infoAddress"></p>
+      <p id="infoPhone"></p>
+      <div class="social-row" id="socialRow"></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="fbrand" id="footerBrand">Urban Nosh</div>
+  <div class="fline" id="footerHandle">@ Ruchikoottu</div>
+  <div class="thanks">Thank you for supporting local</div>
+</footer>
+
+<!-- Floating action buttons -->
+<div class="fab-stack">
+  <button class="fab top" id="topFab" aria-label="Back to top">↑</button>
+  <a class="fab call" id="callFab" href="#" aria-label="Call restaurant">📞</a>
+  <a class="fab whatsapp" id="whatsappFab" href="#" target="_blank" rel="noopener" aria-label="Order on WhatsApp">💬</a>
+</div>
+
+<!-- Item detail modal -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Item details">
+  <div class="modal-sheet">
+    <div class="modal-drag"></div>
+    <button class="modal-close" id="modalCloseBtn" aria-label="Close">✕</button>
+    <div id="modalPhotoWrap"></div>
+    <div class="modal-body">
+      <div class="modal-title-row">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <div class="modal-price" id="modalPrice"></div>
+      </div>
+      <div class="badge-row" id="modalBadges"></div>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-meta-row">
+        <div class="meta-item"><strong id="modalCategory"></strong>Category</div>
+        <div class="meta-item"><strong id="modalPrepTime"></strong>Prep time</div>
+        <div class="meta-item">
+          <div class="spicy-meter" id="modalSpicyMeter"><span></span><span></span><span></span></div>
+          Spice level
+        </div>
+      </div>
+      <button class="filter-chip" id="modalFavBtn" style="margin-top:16px;">♡ Add to favorites</button>
+    </div>
+    <div class="modal-related" id="modalRelatedBlock">
+      <h4>You might also like</h4>
+      <div class="related-scroll" id="relatedScroll"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

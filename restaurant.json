@@ -1,0 +1,31 @@
+{
+  "name": "Urban Nosh",
+  "handle": "@ Ruchikoottu",
+  "tagline": "Good Food. Urban Mood.",
+  "subtagline": "That's Urban Nosh.",
+  "logoText": "UN",
+  "address": "Ruchikoottu, Kerala, India",
+  "phone": "8088956970",
+  "whatsapp": "918088956970",
+  "email": "",
+  "openingHours": [
+    { "day": "Mon - Sun", "hours": "10:00 AM - 10:00 PM" }
+  ],
+  "googleMapsLink": "",
+  "instagram": "",
+  "facebook": "",
+  "services": ["Dine In", "Take Away", "Delivery"],
+  "heroImages": [],
+  "todaysSpecialCategory": "Fry's",
+  "themeColors": {
+    "cream": "#F1E4CC",
+    "creamDeep": "#E8D5B0",
+    "paper": "#FBF6EC",
+    "coffee": "#3A2A1E",
+    "coffeeSoft": "#5C4632",
+    "olive": "#4B5A34",
+    "oliveDeep": "#33401F",
+    "rust": "#B0501F",
+    "gold": "#C98A2E"
+  }
+}
